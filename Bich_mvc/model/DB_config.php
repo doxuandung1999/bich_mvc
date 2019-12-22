@@ -55,6 +55,16 @@
              }
              return $data;
          }
+           // phương thức đếm số lượng bản ghi
+        public function numRow()
+        {
+            if($this->result){
+                $num = mysqli_num_rows($this->result);
+            }else{
+                $num = 0;
+            }
+            return $num;
+        }
          //hiện danh sách các môn đăng kí 
          public function selectMonDk()
          {
@@ -63,38 +73,67 @@
             return $this->execute($sql);
          }
          // thêm môn đăng kí thi
-         public function insertMonDk($maMon)
+         public function insertMonDk($maMon , $masv)
          {
              # code...
-             $sql = "insert into lichthi(maMon) values('$maMon')";
+             $sql = "insert into lichthi(maMon , maSv) values('$maMon' , '$masv')";
              return $this->execute($sql);
 
          }
          // check môn thi đã được đăng kí hay chưa
-         public function checkMonDk($maMon)
+         public function checkMonDk($masv , $maMon)
          {
              # code...
-             $sql = "select count(maLichThi) as count from lichthi where maMon = '$maMon'";
+             $sql = "select count(maLichThi) as count from lichthi where maMon = '$maMon' and maSv = '$masv'";
              $this->execute($sql);
              $data = $this->getData();
              return $data;
          }
          // đếm số kì thi đã đăng kí
-         public function countKiThi()
+         public function countKiThi($masv)
          {
              # code...
-             $sql = "select count(*) as count_lt from lichthi";
+             $sql = "select count(*) as count_lt from lichthi where maSv = '$masv'";
              $this->execute($sql);
              $data = $this->getData();
              return $data;
          }
          // hiện danh sách lịch thi
-         public function selectLichThi()
+         public function selectLichThi($masv)
          {
              # code...
-             $sql = "select * from mondkthi m inner join lichthi lt on m.maMon = lt.maMon";
+             $sql = "select * from mondkthi m inner join lichthi lt on m.maMon = lt.maMon where lt.maSv = '$masv'";
              return $this->execute($sql);
          }
+         // đếm số người đăng kí
+         public function countActor($maMon)
+         {
+             # code...
+             $sql = "select count(maMon) as count from lichthi where maMon= '$maMon'";
+             $this->execute($sql);
+             $data = $this->getData();
+             return $data;
+
+         }
+         // xác minh tài khoản đăng nhập
+        public function loginAccept($masv , $password)
+        {
+            # code...
+            $sql = "select * from sinhvien where maSv = '$masv' and passWord = '$password'";
+            $this->execute($sql);
+            $num = $this->numRow();
+            return $num;
+        }
+         // lấy thông tin tài khoản đang đăng nhập
+         public function getActor($masv)
+         {
+             # code...
+             $sql = "select * from sinhvien where maSv = '$masv'";
+             $this->execute($sql);
+             $data = $this->getData();
+             return $data;
+         }
+         
     }
     
 ?>  

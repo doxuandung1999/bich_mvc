@@ -25,8 +25,8 @@
 					<p>Khoa: </p>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-9">
-					<p>Trịnh Thị Thảo</p>
-					<p>Công nghệ thông tin</p>
+					<p><?php echo $hoTen;?></p>
+					<p><?php echo $nganhhoc;?></p>
 				</div>
 			</div>
 		</div>
@@ -37,8 +37,8 @@
 					<p>Khóa: </p>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-9">
-					<p>10/09/1999</p>
-					<p>QH-2017-I/CQ</p>
+					<p><?php echo $ngaysinh;?></p>
+					<p><?php echo $khoa;?></p>
 				</div>
 			</div>
 		</div>
@@ -49,8 +49,8 @@
 					<p>Lớp: </p>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-9">
-					<p>17021025</p>
-					<p>QH-2017-I/CQ-CD</p>
+					<p><?php echo $masv;?></p>
+					<p><?php echo $lop;?></p>
 				</div>
 			</div>
 		</div>

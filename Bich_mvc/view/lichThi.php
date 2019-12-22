@@ -15,7 +15,7 @@
 			<h4>Dành cho sinh viên</h4>
 		</div>
 		<div class="welcome">
-			Xin chào bạn: <strong>Trịnh Thị Thảo </strong>[17021025]
+			Xin chào bạn: <strong><?php echo $hoTen;?> </strong>[<?php echo $masv;?>]
 		</div>
 		<div class="bannerMenu">
 			<ul>
@@ -36,7 +36,7 @@
 					<a class="smooth" href="#" title>Đổi mật khẩu</a>
 				</li>
 				<li class="exit">
-					<a class="smooth" href="#" title>Thoát</a>
+					<a class="smooth" href="index.php?controller=actor&action=login" title>Thoát</a>
 				</li>
 			</ul>
 		</div>
